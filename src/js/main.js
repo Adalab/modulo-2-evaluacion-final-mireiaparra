@@ -1,54 +1,42 @@
-"use strict"
+"use strict";
+let characters = [];
 
+function paintCharacters(charactersData) {
+  for (let i = 0; i < charactersData.length; i++) {
+    const articleElement = document.createElement("article");
+    articleElement.classList.add("characters__back");
+    const liElement = document.createElement("li");
 
-// function createChElement() {
-//     for (let i=0; i<6; i++) {
-//         const liElement = document.createElement("li");
-       
-//         const imgElement = document.createElement("img");
-//         liElement.appendChild(imgElement);
-//         const titleElement = document.createElement("h2");
-//         liElement.appendChild(titleElement);
-//         const textElement = document.createElement("p");
-//         liElement.appendChild(textElement);
+    const imgElement = document.createElement("img");
+    liElement.appendChild(imgElement);
+    const titleElement = document.createElement("h2");
+    liElement.appendChild(titleElement);
+    const textElement = document.createElement("p");
+    liElement.appendChild(textElement);
 
-//         allList.appendChild(liElement);
+    articleElement.appendChild(liElement);
+    allList.appendChild(articleElement);
 
-     
-//     }
-//     return allList;
-// }
+    const nameText = document.createTextNode(`${charactersData[i].name}`);
+    titleElement.appendChild(nameText);
 
-// createChElement();
+    imgElement.src = `${charactersData[i].img}`;
+    imgElement.alt = `Photo of ${charactersData[i].name}`;
+    imgElement.style.height = "150px";
+    imgElement.style.width = "110px";
 
-function getCh(){
-    fetch("https://breakingbadapi.com/api/characters")
+    const statusText = document.createTextNode(`${charactersData[i].status}`);
+    textElement.appendChild(statusText);
+  }
+}
+
+function getCharacter() {
+  fetch("https://breakingbadapi.com/api/characters")
     .then((response) => response.json())
     .then((data) => {
-        for (let i=0; i<8; i++) {
-            const liElement = document.createElement("li");
-       
-            const imgElement = document.createElement("img");
-            liElement.appendChild(imgElement);
-            const titleElement = document.createElement("h2");
-            liElement.appendChild(titleElement);
-            const textElement = document.createElement("p");
-            liElement.appendChild(textElement);
-    
-            allList.appendChild(liElement);
-
-           const nameText = document.createTextNode(`${data[i].name}`);
-           titleElement.appendChild(nameText);
-
-           imgElement.src = `${data[i].img}`;
-           imgElement.style.height = "150px";
-           imgElement.style.width = "110px";
-
-           const statusText = document.createTextNode(`${data[i].status}`);
-           textElement.appendChild(statusText);
-        }
-       
+      characters = data;
+      paintCharacters(data);
     });
 }
 
-getCh();
+getCharacter();

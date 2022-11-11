@@ -1,56 +1,60 @@
-const allList = document.querySelector(".js-allChList");
-"use strict"
+"use strict";
+const allList = document.querySelector(".js-allCharactersList");
+const searchBtn = document.querySelector(".js-searchBtn");
+const searchInput = document.querySelector(".js-searchInput");
+
+"use strict";
+function handleClick(ev) {
+    ev.preventDefault;
+
+    const searchCharacters = characters.filter((eachCharacter) => eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+    allList.innerHTML = "";
+    paintCharacters(searchCharacters);
+    }
 
 
-// function createChElement() {
-//     for (let i=0; i<6; i++) {
-//         const liElement = document.createElement("li");
-       
-//         const imgElement = document.createElement("img");
-//         liElement.appendChild(imgElement);
-//         const titleElement = document.createElement("h2");
-//         liElement.appendChild(titleElement);
-//         const textElement = document.createElement("p");
-//         liElement.appendChild(textElement);
+searchBtn.addEventListener('click', handleClick);
+"use strict";
+let characters = [];
 
-//         allList.appendChild(liElement);
+function paintCharacters(charactersData) {
+  for (let i = 0; i < charactersData.length; i++) {
+    const articleElement = document.createElement("article");
+    articleElement.classList.add("characters__back");
+    const liElement = document.createElement("li");
 
-     
-//     }
-//     return allList;
-// }
+    const imgElement = document.createElement("img");
+    liElement.appendChild(imgElement);
+    const titleElement = document.createElement("h2");
+    liElement.appendChild(titleElement);
+    const textElement = document.createElement("p");
+    liElement.appendChild(textElement);
 
-// createChElement();
+    articleElement.appendChild(liElement);
+    allList.appendChild(articleElement);
 
-function getCh(){
-    fetch("https://breakingbadapi.com/api/characters")
+    const nameText = document.createTextNode(`${charactersData[i].name}`);
+    titleElement.appendChild(nameText);
+
+    imgElement.src = `${charactersData[i].img}`;
+    imgElement.alt = `Photo of ${charactersData[i].name}`;
+    imgElement.style.height = "150px";
+    imgElement.style.width = "110px";
+
+    const statusText = document.createTextNode(`${charactersData[i].status}`);
+    textElement.appendChild(statusText);
+  }
+}
+
+function getCharacter() {
+  fetch("https://breakingbadapi.com/api/characters")
     .then((response) => response.json())
     .then((data) => {
-        for (let i=0; i<8; i++) {
-            const liElement = document.createElement("li");
-       
-            const imgElement = document.createElement("img");
-            liElement.appendChild(imgElement);
-            const titleElement = document.createElement("h2");
-            liElement.appendChild(titleElement);
-            const textElement = document.createElement("p");
-            liElement.appendChild(textElement);
-    
-            allList.appendChild(liElement);
-
-           const nameText = document.createTextNode(`${data[i].name}`);
-           titleElement.appendChild(nameText);
-
-           imgElement.src = `${data[i].img}`;
-           imgElement.style.height = "150px";
-           imgElement.style.width = "110px";
-
-           const statusText = document.createTextNode(`${data[i].status}`);
-           textElement.appendChild(statusText);
-        }
-       
+      characters = data;
+      paintCharacters(data);
     });
 }
 
-getCh();
+getCharacter();
+
 //# sourceMappingURL=main.js.map
