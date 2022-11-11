@@ -1,3 +1,4 @@
+const allList = document.querySelector(".js-allChList");
 "use strict"
 
 function createChElement() {
@@ -24,3 +25,4 @@ function getCh(){
 
     });
 }
+//# sourceMappingURL=main.js.map

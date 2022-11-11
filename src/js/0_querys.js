@@ -1,0 +1,1 @@
+const allList = document.querySelector(".js-allChList");
