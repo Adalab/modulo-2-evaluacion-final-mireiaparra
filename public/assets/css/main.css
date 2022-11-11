@@ -47,4 +47,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.ch__list {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap; }
+
 /*# sourceMappingURL=main.css.map */
