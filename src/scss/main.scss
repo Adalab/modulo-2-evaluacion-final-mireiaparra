@@ -6,4 +6,10 @@
 // @import 'pages/index';
 @import 'core/reset';
 @import 'layout/allCharacters';
+@import 'layout/favCharacters';
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
 

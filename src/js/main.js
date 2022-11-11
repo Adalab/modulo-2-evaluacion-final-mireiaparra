@@ -1,21 +1,23 @@
 "use strict";
 let characters = [];
 
-function paintCharacters(charactersData) {
+function paintCharacters(charactersData, list) {
   for (let i = 0; i < charactersData.length; i++) {
+    const liElement = document.createElement("li");
     const articleElement = document.createElement("article");
     articleElement.classList.add("characters__back");
-    const liElement = document.createElement("li");
+    articleElement.setAttribute("id", `${charactersData[i].char_id}`);
+  
 
     const imgElement = document.createElement("img");
-    liElement.appendChild(imgElement);
+    articleElement.appendChild(imgElement);
     const titleElement = document.createElement("h2");
-    liElement.appendChild(titleElement);
+    articleElement.appendChild(titleElement);
     const textElement = document.createElement("p");
-    liElement.appendChild(textElement);
+    articleElement.appendChild(textElement);
 
-    articleElement.appendChild(liElement);
-    allList.appendChild(articleElement);
+    liElement.appendChild(articleElement);
+    list.appendChild(liElement);
 
     const nameText = document.createTextNode(`${charactersData[i].name}`);
     titleElement.appendChild(nameText);
@@ -35,7 +37,7 @@ function getCharacter() {
     .then((response) => response.json())
     .then((data) => {
       characters = data;
-      paintCharacters(data);
+      paintCharacters(data, allList);
     });
 }
 

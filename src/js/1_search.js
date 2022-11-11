@@ -2,9 +2,13 @@
 function handleClick(ev) {
     ev.preventDefault;
 
-    const searchCharacters = characters.filter((eachCharacter) => eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+    const searchCharactersName = characters.filter((eachCharacter) => eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase()));
+    const searchCharactersStatus = characters.filter((eachCharacter) => eachCharacter.status.toLowerCase().includes(searchInput.value.toLowerCase()));
+
+    let filteredCharacters = searchCharactersName.concat(searchCharactersStatus);
+
     allList.innerHTML = "";
-    paintCharacters(searchCharacters);
+    paintCharacters(filteredCharacters, allList);
     }
 
 
