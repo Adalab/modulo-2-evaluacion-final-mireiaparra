@@ -1,8 +1,12 @@
 "use strict";
 const allList = document.querySelector(".js-allCharactersList");
 const favList = document.querySelector(".js-favCharactersList")
+const favSection = document.querySelector(".js-favSection");
 const searchBtn = document.querySelector(".js-searchBtn");
 const searchInput = document.querySelector(".js-searchInput");
+const container = document.querySelector(".js-main");
+
+
 
 "use strict";
 function handleClick(ev) {
@@ -24,16 +28,36 @@ let favCharacters = [];
 
 function paintFav(ev){
     let favElement =  ev.target.parentElement;
-    favElement.classList.toggle("fav");
+    // favElement.classList.toggle("fav");
 
     const findFav = characters.find((eachFav) => eachFav.char_id == parseInt(favElement.id));
    
     favCharacters.push(findFav);
-    console.log(favCharacters);
     favList.innerHTML = '';
-    paintCharacters(favCharacters, favList);
+    favSection.classList.remove("hidden");
+    paintCharacters(favCharacters, favList, "fav");
+    styleFav();
+    setLocalSt();
 }
-   
+
+ 
+// function hideFav(){
+//     if (favCharacters == []) {
+//         favSection.classList.add("hidden");
+// }
+// }
+
+function styleFav(){
+    container.classList.add("main");
+    const favArticles = document.querySelectorAll(".fav");
+    console.log(favArticles);
+    for (const favArticle of favArticles) {
+        const removeFav = document.createElement("button");
+        const removeFavText = document.createTextNode("X");
+        removeFav.appendChild(removeFavText);
+        favArticle.appendChild(removeFav);
+    }
+}
 
 function handleClickFav(ev) {
     ev.preventDefault;
@@ -42,16 +66,31 @@ function handleClickFav(ev) {
 
 allList.addEventListener('click', handleClickFav);
 "use strict";
+let favLocal = [];
+
+function setLocalSt(){
+    localStorage.setItem("favChar", JSON.stringify(favCharacters));
+    favLocal = JSON.parse(localStorage.getItem("favChar"));
+}
+
+// function paintLocalSt(){
+//     if (favLocal !==[]) {
+//         favSection.classList.remove("hidden");
+//         container.classList.add("main");
+//         paintCharacters(favLocal, favList);
+//         console.log(favLocal);
+//  } 
+// }
+"use strict";
 let characters = [];
 
-function paintCharacters(charactersData, list) {
+function paintCharacters(charactersData, list, className) {
   for (let i = 0; i < charactersData.length; i++) {
     const liElement = document.createElement("li");
     const articleElement = document.createElement("article");
-    articleElement.classList.add("characters__back");
+    articleElement.classList.add(className);
     articleElement.setAttribute("id", `${charactersData[i].char_id}`);
-  
-
+   
     const imgElement = document.createElement("img");
     articleElement.appendChild(imgElement);
     const titleElement = document.createElement("h2");
@@ -80,10 +119,11 @@ function getCharacter() {
     .then((response) => response.json())
     .then((data) => {
       characters = data;
-      paintCharacters(data, allList);
+      paintCharacters(data, allList, "characters__back");
     });
 }
 
 getCharacter();
+// paintLocalSt();
 
 //# sourceMappingURL=main.js.map

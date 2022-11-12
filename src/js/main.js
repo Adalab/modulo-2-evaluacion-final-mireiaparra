@@ -1,14 +1,13 @@
 "use strict";
 let characters = [];
 
-function paintCharacters(charactersData, list) {
+function paintCharacters(charactersData, list, className) {
   for (let i = 0; i < charactersData.length; i++) {
     const liElement = document.createElement("li");
     const articleElement = document.createElement("article");
-    articleElement.classList.add("characters__back");
+    articleElement.classList.add(className);
     articleElement.setAttribute("id", `${charactersData[i].char_id}`);
-  
-
+   
     const imgElement = document.createElement("img");
     articleElement.appendChild(imgElement);
     const titleElement = document.createElement("h2");
@@ -37,8 +36,9 @@ function getCharacter() {
     .then((response) => response.json())
     .then((data) => {
       characters = data;
-      paintCharacters(data, allList);
+      paintCharacters(data, allList, "characters__back");
     });
 }
 
 getCharacter();
+// paintLocalSt();
