@@ -40,5 +40,7 @@ function getCharacter() {
     });
 }
 
+
+//Al cargar la página
 getCharacter();
-// paintLocalSt();
+paintLocalSt();

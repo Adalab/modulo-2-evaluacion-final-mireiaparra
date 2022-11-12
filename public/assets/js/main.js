@@ -30,22 +30,31 @@ function paintFav(ev){
     let favElement =  ev.target.parentElement;
     // favElement.classList.toggle("fav");
 
-    const findFav = characters.find((eachFav) => eachFav.char_id == parseInt(favElement.id));
-   
-    favCharacters.push(findFav);
-    favList.innerHTML = '';
-    favSection.classList.remove("hidden");
-    paintCharacters(favCharacters, favList, "fav");
-    styleFav();
+    //Encontrar el objeto según el click que haga
+    const findFav = characters.find((eachChar) => eachChar.char_id == parseInt(favElement.id));
+
+    //Encontrar la posición del objeto en el que he hecho click en el array
+    const isFavIndex = favCharacters.findIndex((eachFav) => eachFav.char_id == parseInt(favElement.id));
+
+    //Comprobar si el objeto NO estaba en el array y añadirlo o quitarlo si SÍ estaba
+    if (isFavIndex === -1) {
+        favCharacters.push(findFav);
+    } else {
+        favCharacters.splice(isFavIndex, 1);
+    }
     setLocalSt();
+    favList.innerHTML = '';
+
+    if (favCharacters === []) {
+        favSection.classList.add("hidden");
+    } else {
+        favSection.classList.remove("hidden");
+        paintCharacters(favCharacters, favList, "fav");
+        styleFav();
+    }
+
 }
 
- 
-// function hideFav(){
-//     if (favCharacters == []) {
-//         favSection.classList.add("hidden");
-// }
-// }
 
 function styleFav(){
     container.classList.add("main");
@@ -66,21 +75,22 @@ function handleClickFav(ev) {
 
 allList.addEventListener('click', handleClickFav);
 "use strict";
-let favLocal = [];
+let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
 function setLocalSt(){
-    localStorage.setItem("favChar", JSON.stringify(favCharacters));
-    favLocal = JSON.parse(localStorage.getItem("favChar"));
+   localStorage.setItem("favChars", JSON.stringify(favCharacters));
 }
 
-// function paintLocalSt(){
-//     if (favLocal !==[]) {
-//         favSection.classList.remove("hidden");
-//         container.classList.add("main");
-//         paintCharacters(favLocal, favList);
-//         console.log(favLocal);
-//  } 
-// }
+function paintLocalSt(){
+    if (favsLocal !== null) {
+        favSection.classList.remove("hidden");
+        container.classList.add("main");
+        favCharacters = favsLocal;
+        paintCharacters(favsLocal, favList, "fav");     
+ } 
+}
+
+
 "use strict";
 let characters = [];
 
@@ -123,7 +133,9 @@ function getCharacter() {
     });
 }
 
+
+//Al cargar la página
 getCharacter();
-// paintLocalSt();
+paintLocalSt();
 
 //# sourceMappingURL=main.js.map

@@ -1,16 +1,16 @@
 "use strict";
-let favLocal = [];
+let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
 function setLocalSt(){
-    localStorage.setItem("favChar", JSON.stringify(favCharacters));
-    favLocal = JSON.parse(localStorage.getItem("favChar"));
+   localStorage.setItem("favChars", JSON.stringify(favCharacters));
 }
 
-// function paintLocalSt(){
-//     if (favLocal !==[]) {
-//         favSection.classList.remove("hidden");
-//         container.classList.add("main");
-//         paintCharacters(favLocal, favList);
-//         console.log(favLocal);
-//  } 
-// }
+function paintLocalSt(){
+    if (favsLocal !== null) {
+        favSection.classList.remove("hidden");
+        container.classList.add("main");
+        favCharacters = favsLocal;
+        paintCharacters(favsLocal, favList, "fav");     
+ } 
+}
+
