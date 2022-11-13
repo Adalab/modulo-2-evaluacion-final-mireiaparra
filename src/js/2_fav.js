@@ -26,6 +26,15 @@ function paintFav(ev){
         favSection.classList.remove("hidden");
         paintCharacters(favCharacters, favList, "fav");
         styleFav();
+        reset();
+    
+    const removeFavBtnNode = document.querySelectorAll(".removeFav");
+    const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
+    console.log(removeFavBtns);
+
+    for (let i = 0; i < removeFavBtns.length; i++) {
+        removeFavBtns.addEventListener('click', handleClickRemove);
+    }
     }
 
 }
@@ -34,12 +43,13 @@ function paintFav(ev){
 function styleFav(){
     container.classList.add("main");
     const favArticles = document.querySelectorAll(".fav");
-    console.log(favArticles);
+    // console.log(favArticles);
     for (const favArticle of favArticles) {
-        const removeFav = document.createElement("button");
+        const removeFavBtn = document.createElement("p");
+        removeFavBtn.classList.add("removeFav");
         const removeFavText = document.createTextNode("X");
-        removeFav.appendChild(removeFavText);
-        favArticle.appendChild(removeFav);
+        removeFavBtn.appendChild(removeFavText);
+        favArticle.appendChild(removeFavBtn);
     }
 }
 
@@ -49,3 +59,12 @@ function handleClickFav(ev) {
 }
 
 allList.addEventListener('click', handleClickFav);
+
+
+
+function handleClickRemove(ev){
+ ev.preventDefault;
+    console.log("he hecho click");
+//  const isFavIndex = favCharacters.findIndex((eachFav) => eachFav.char_id == parseInt( ev.target.parentElement.id));
+//  favCharacters.splice(isFavIndex, 1);
+}

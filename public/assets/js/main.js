@@ -51,6 +51,14 @@ function paintFav(ev){
         favSection.classList.remove("hidden");
         paintCharacters(favCharacters, favList, "fav");
         styleFav();
+    
+    const removeFavBtnNode = document.querySelectorAll(".removeFav");
+    const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
+    console.log(removeFavBtns);
+
+    for (let i = 0; i < removeFavBtns.length; i++) {
+        removeFavBtns[i].addEventListener('click', handleClickRemove);
+    }
     }
 
 }
@@ -59,12 +67,13 @@ function paintFav(ev){
 function styleFav(){
     container.classList.add("main");
     const favArticles = document.querySelectorAll(".fav");
-    console.log(favArticles);
+    // console.log(favArticles);
     for (const favArticle of favArticles) {
-        const removeFav = document.createElement("button");
+        const removeFavBtn = document.createElement("p");
+        removeFavBtn.classList.add("removeFav");
         const removeFavText = document.createTextNode("X");
-        removeFav.appendChild(removeFavText);
-        favArticle.appendChild(removeFav);
+        removeFavBtn.appendChild(removeFavText);
+        favArticle.appendChild(removeFavBtn);
     }
 }
 
@@ -74,6 +83,17 @@ function handleClickFav(ev) {
 }
 
 allList.addEventListener('click', handleClickFav);
+
+
+
+function handleClickRemove(ev){
+ ev.preventDefault;
+    console.log("he hecho click", ev.target.parentElement);
+ const isFavIndex = favCharacters.findIndex((eachFav) => parseInt(ev.target.parentElement));
+ console.log(isFavIndex);
+ favCharacters.splice(isFavIndex, 1);
+}
+
 "use strict";
 let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
@@ -84,9 +104,9 @@ function setLocalSt(){
 function paintLocalSt(){
     if (favsLocal !== null) {
         favSection.classList.remove("hidden");
-        container.classList.add("main");
         favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");     
+        paintCharacters(favsLocal, favList, "fav");
+        styleFav();     
  } 
 }
 

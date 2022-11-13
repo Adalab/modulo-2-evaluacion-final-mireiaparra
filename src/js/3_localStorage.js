@@ -8,9 +8,17 @@ function setLocalSt(){
 function paintLocalSt(){
     if (favsLocal !== null) {
         favSection.classList.remove("hidden");
-        container.classList.add("main");
         favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");     
+        paintCharacters(favsLocal, favList, "fav");
+        styleFav();     
+          reset();
+        const removeFavBtnNode = document.querySelectorAll(".removeFav");
+        const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
+        console.log(removeFavBtns);
+    
+        for (let i = 0; i < removeFavBtns.length; i++) {
+            removeFavBtns.addEventListener('click', handleClickRemove);
+        }
  } 
 }
 
