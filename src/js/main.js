@@ -47,4 +47,5 @@ function getCharacters() {
 
 // Al cargar la página
 getCharacters();
-// paintLocalSt();
+paintLocalSt();
+

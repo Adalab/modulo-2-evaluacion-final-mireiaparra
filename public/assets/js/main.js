@@ -16,14 +16,54 @@ function handleClickSearch(ev) {
     const searchCharactersStatus = characters.filter((eachCharacter) => eachCharacter.status.toLowerCase().includes(searchInput.value.toLowerCase()));
 
     let filteredCharacters = searchCharactersName.concat(searchCharactersStatus);
-    console.log(filteredCharacters);
+
+      // Encontrar el objeto de search que tenga el mismo char_id que mi elemento de favsList
+      // TODO: repasar == por ===
+
+    // const findSearch = characters.find((eachChar) => eachChar.char_id == parseInt(.id));
+    // console.log(findSearch);
+
 
     allList.innerHTML = "";
     paintCharacters(filteredCharacters, allList, "characters__back");
+    // filteredChildren es un HTMLCollection de li(s)
+    // Quiero encontrar los elemetos de filteredCharacters(array de objetos character) que estan en favCharacters(array de objetos character)
+
     const filteredChildren = allList.children;
+
+    // const favListLi = favList.childNodes;
+    // const favListLiArr = Array.prototype.slice.call(favListLi);
+    const eachFav = document.querySelector(".fav");
+    let findSearch = [];
     for (let i = 0; i < filteredChildren.length; i++) {
         filteredChildren[i].addEventListener('click', handleClickFav);
+
+        //Article de cada elemento de la lista de filtrados
+        const eachFiltered = filteredChildren[i].firstChild;
+        // console.log(eachFiltered.id);
+
+        if (eachFav !== null) {
+        //Esto da el array de objetos de la lista de filtered que tenga un id igual a los que están en favoritos
+       const findSearchArr = filteredCharacters.filter((eachChar) => eachChar.char_id == parseInt(eachFav.id));
+       const findSearchIndex = filteredCharacters.indexOf((eachChar) => eachChar.char_id == parseInt(eachFav.id));
+
+          //Comprobar si el objeto NO estaba en el array y añadirlo o quitarlo si SÍ estaba
+    if (findSearchIndex === -1) {
+        findSearch.push(findSearchArr);
+        console.log(findSearch);
+    } else {
+        findSearch.splice(findSearchIndex, 1);
     }
+    }
+
+    // paintCharacters(filteredCharacters, allList, "characters__back");
+        // console.log(findSearchArr);
+        // findSearch.push(findSearchArr);
+
+        // console.log(findSearchArr);
+    }
+    // console.log(findSearch);
+    // paintCharacters(findSearch, allList, "fav");
 }
 
 searchBtn.addEventListener('click', handleClickSearch);
@@ -32,7 +72,7 @@ let favCharacters = [];
 
 function paintFav(ev){
     let favElement =  ev.target.parentElement;
-    // favElement.classList.toggle("fav");
+    favElement.classList.add("allFavs");
 
     //Encontrar el objeto según el click que haga
     const findFav = characters.find((eachChar) => eachChar.char_id == parseInt(favElement.id));
@@ -47,11 +87,10 @@ function paintFav(ev){
         console.log(findFav);
     } else {
         favCharacters.splice(isFavIndex, 1);
+        favElement.classList.remove("allFavs");
     }
-    // setLocalSt();
 
   updateFavList();
-
 }
 
 function updateFavList(){
@@ -60,11 +99,14 @@ function updateFavList(){
     if (favCharacters.length === 0 || favCharacters === null) {
         favSection.classList.add("hidden");
         container.classList.remove("main");
+        removeLocalSt();
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
         paintCharacters(favCharacters, favList, "fav");
+        console.log(favCharacters.length);
         styleFav();
+        setLocalSt();
         console.log("Esto es el else");
     }
 }
@@ -97,50 +139,55 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
+//Al cargar la página es 0, así que no se crea el botón con el primer click
+if (favCharacters.length === 1) {
+    createReset(); }
 
 
 
 
 
+"use strict";
 
-// "use strict";
+let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
-// // Cómo lo va a coger cuando está vacío?
-// let favsLocal = JSON.parse(localStorage.getItem("favChars"));
+function setLocalSt(){
+   localStorage.setItem("favChars", JSON.stringify(favCharacters));
+}
+function removeLocalSt(){
+    localStorage.removeItem("favChars");
+}
 
-// function setLocalSt(){
-//    localStorage.setItem("favChars", JSON.stringify(favCharacters));
-// }
-
-// function paintLocalSt(){
-//     if (favsLocal !== null ||  favsLocal!== []) {
-//         favSection.classList.remove("hidden");
-//         favCharacters = favsLocal;
-//         paintCharacters(favsLocal, favList, "fav");
-//         styleFav();     
-//           // reset();
-//         const removeFavBtnNode = document.querySelectorAll(".removeFav");
-//         const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
-//         console.log(removeFavBtns);
-    
-//         for (let i = 0; i < removeFavBtns.length; i++) {
-//             removeFavBtns.addEventListener('click', handleClickRemove);
-//         }
-//  } 
-// }
+function paintLocalSt(){
+    if (favsLocal !== null && favsLocal !== []) {
+        favSection.classList.remove("hidden");
+        favCharacters = favsLocal;
+        paintCharacters(favsLocal, favList, "fav");
+        styleFav();     
+        createReset();
+        }
+ } 
 
 
-function reset(){
+
+function createReset(){
     const resetBtn = document.createElement("button");
     const resetText = document.createTextNode("Delete All");
     resetBtn.appendChild(resetText);
     resetBtn.classList.add("resetBtn");
-    favList.appendChild(resetBtn);
+    favSection.appendChild(resetBtn);
+    resetBtn.addEventListener('click', handleClickReset);
+}
+
+
+
+
+function handleClickReset(){
+    favCharacters = [];
     favList.innerHTML = "";
-    favList.classList.add("hidden");
+    favSection.classList.add("hidden");
     container.classList.remove("main");
 }
-// reset();
 "use strict";
 let characters = [];
 
@@ -190,6 +237,7 @@ function getCharacters() {
 
 // Al cargar la página
 getCharacters();
-// paintLocalSt();
+paintLocalSt();
+
 
 //# sourceMappingURL=main.js.map

@@ -1,26 +1,22 @@
-// "use strict";
+"use strict";
 
-// // Cómo lo va a coger cuando está vacío?
-// let favsLocal = JSON.parse(localStorage.getItem("favChars"));
+let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
-// function setLocalSt(){
-//    localStorage.setItem("favChars", JSON.stringify(favCharacters));
-// }
+function setLocalSt(){
+   localStorage.setItem("favChars", JSON.stringify(favCharacters));
+}
+function removeLocalSt(){
+    localStorage.removeItem("favChars");
+}
 
-// function paintLocalSt(){
-//     if (favsLocal !== null ||  favsLocal!== []) {
-//         favSection.classList.remove("hidden");
-//         favCharacters = favsLocal;
-//         paintCharacters(favsLocal, favList, "fav");
-//         styleFav();     
-//           // reset();
-//         const removeFavBtnNode = document.querySelectorAll(".removeFav");
-//         const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
-//         console.log(removeFavBtns);
-    
-//         for (let i = 0; i < removeFavBtns.length; i++) {
-//             removeFavBtns.addEventListener('click', handleClickRemove);
-//         }
-//  } 
-// }
+function paintLocalSt(){
+    if (favsLocal !== null && favsLocal !== []) {
+        favSection.classList.remove("hidden");
+        favCharacters = favsLocal;
+        paintCharacters(favsLocal, favList, "fav");
+        styleFav();     
+        createReset();
+        }
+ } 
+
 

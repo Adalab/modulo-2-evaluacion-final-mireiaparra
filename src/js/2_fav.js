@@ -3,7 +3,7 @@ let favCharacters = [];
 
 function paintFav(ev){
     let favElement =  ev.target.parentElement;
-    // favElement.classList.toggle("fav");
+    favElement.classList.add("allFavs");
 
     //Encontrar el objeto según el click que haga
     const findFav = characters.find((eachChar) => eachChar.char_id == parseInt(favElement.id));
@@ -18,11 +18,10 @@ function paintFav(ev){
         console.log(findFav);
     } else {
         favCharacters.splice(isFavIndex, 1);
+        favElement.classList.remove("allFavs");
     }
-    // setLocalSt();
 
   updateFavList();
-
 }
 
 function updateFavList(){
@@ -31,11 +30,14 @@ function updateFavList(){
     if (favCharacters.length === 0 || favCharacters === null) {
         favSection.classList.add("hidden");
         container.classList.remove("main");
+        removeLocalSt();
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
         paintCharacters(favCharacters, favList, "fav");
+        console.log(favCharacters.length);
         styleFav();
+        setLocalSt();
         console.log("Esto es el else");
     }
 }
@@ -68,7 +70,9 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
-
+//Al cargar la página es 0, así que no se crea el botón con el primer click
+if (favCharacters.length === 1) {
+    createReset(); }
 
 
 

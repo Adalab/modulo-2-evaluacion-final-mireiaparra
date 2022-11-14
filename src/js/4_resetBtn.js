@@ -1,11 +1,18 @@
-function reset(){
+function createReset(){
     const resetBtn = document.createElement("button");
     const resetText = document.createTextNode("Delete All");
     resetBtn.appendChild(resetText);
     resetBtn.classList.add("resetBtn");
-    favList.appendChild(resetBtn);
+    favSection.appendChild(resetBtn);
+    resetBtn.addEventListener('click', handleClickReset);
+}
+
+
+
+
+function handleClickReset(){
+    favCharacters = [];
     favList.innerHTML = "";
-    favList.classList.add("hidden");
+    favSection.classList.add("hidden");
     container.classList.remove("main");
 }
-// reset();
