@@ -11,7 +11,7 @@ function paintLocalSt(){
         favCharacters = favsLocal;
         paintCharacters(favsLocal, favList, "fav");
         styleFav();     
-          reset();
+          // reset();
         const removeFavBtnNode = document.querySelectorAll(".removeFav");
         const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
         console.log(removeFavBtns);

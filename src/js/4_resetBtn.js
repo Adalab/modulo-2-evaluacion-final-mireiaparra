@@ -8,4 +8,4 @@ function reset(){
     favList.classList.add("hidden");
     container.classList.remove("main");
 }
-reset();
+// reset();

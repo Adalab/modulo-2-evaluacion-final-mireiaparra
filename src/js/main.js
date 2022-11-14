@@ -31,7 +31,7 @@ function paintCharacters(charactersData, list, className) {
   }
 }
 
-function getCharacter() {
+function getCharacters() {
   fetch("https://breakingbadapi.com/api/characters")
     .then((response) => response.json())
     .then((data) => {
@@ -41,6 +41,6 @@ function getCharacter() {
 }
 
 
-//Al cargar la página
-getCharacter();
+// Al cargar la página
+getCharacters();
 paintLocalSt();
