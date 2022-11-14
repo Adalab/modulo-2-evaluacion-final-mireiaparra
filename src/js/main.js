@@ -36,7 +36,7 @@ function getCharacters() {
     .then((response) => response.json())
     .then((data) => {
       characters = data;
-      paintCharacters(data, allList, "characters__back");
+      paintCharacters(data, allList, "allCharacters__list--article");
       const allListChildren = allList.children;
       for (let i = 0; i < allListChildren.length; i++) {
       allListChildren[i].addEventListener('click', handleClickFav);

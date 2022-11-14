@@ -1,20 +1,11 @@
-// @import 'core/variables';
-// @import 'components/code';
-// @import 'components/links';
-// @import 'layout/page';
-@import 'layout/header';
-@import 'layout/hero';
-// @import 'pages/index';
 @import 'core/reset';
+@import 'layout/header';
+@import 'layout/container';
+
 @import 'layout/allCharacters';
 @import 'layout/favCharacters';
 
-.main {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
 
-.resetBtn{
-    background-color: pink;
-    width: 100px;
-}
+
+
+

@@ -32,7 +32,7 @@ function updateFavList(){
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
-        paintCharacters(favCharacters, favList, "fav");
+        paintCharacters(favCharacters, favList, "favsCharacters__list--article");
         console.log(favCharacters.length);
         styleFav();
         setLocalSt();
@@ -42,7 +42,7 @@ function updateFavList(){
 
 function styleFav(){
     container.classList.add("main");
-    const favArticles = document.querySelectorAll(".fav");
+    const favArticles = document.querySelectorAll(".favsCharacters__list--article");
     // console.log(favArticles);
     for (const favArticle of favArticles) {
         const removeFavBtn = document.createElement("p");

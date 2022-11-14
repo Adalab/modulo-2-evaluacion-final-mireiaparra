@@ -13,7 +13,7 @@ function paintLocalSt(){
     if (favsLocal !== null && favsLocal !== []) {
         favSection.classList.remove("hidden");
         favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");
+        paintCharacters(favsLocal, favList, "favsCharacters__list--article");
         styleFav();  
 
 

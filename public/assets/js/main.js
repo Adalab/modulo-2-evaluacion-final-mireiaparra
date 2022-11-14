@@ -95,7 +95,7 @@ function updateFavList(){
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
-        paintCharacters(favCharacters, favList, "fav");
+        paintCharacters(favCharacters, favList, "favsCharacters__list--article");
         console.log(favCharacters.length);
         styleFav();
         setLocalSt();
@@ -105,7 +105,7 @@ function updateFavList(){
 
 function styleFav(){
     container.classList.add("main");
-    const favArticles = document.querySelectorAll(".fav");
+    const favArticles = document.querySelectorAll(".favsCharacters__list--article");
     // console.log(favArticles);
     for (const favArticle of favArticles) {
         const removeFavBtn = document.createElement("p");
@@ -160,7 +160,7 @@ function paintLocalSt(){
     if (favsLocal !== null && favsLocal !== []) {
         favSection.classList.remove("hidden");
         favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");
+        paintCharacters(favsLocal, favList, "favsCharacters__list--article");
         styleFav();  
 
 
@@ -244,7 +244,7 @@ function getCharacters() {
     .then((response) => response.json())
     .then((data) => {
       characters = data;
-      paintCharacters(data, allList, "characters__back");
+      paintCharacters(data, allList, "allCharacters__list--article");
       const allListChildren = allList.children;
       for (let i = 0; i < allListChildren.length; i++) {
       allListChildren[i].addEventListener('click', handleClickFav);
