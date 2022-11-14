@@ -137,9 +137,9 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
-//Al cargar la página es 0, así que no se crea el botón con el primer click
-if (favCharacters.length === 1) {
-    createReset(); }
+
+createReset(); 
+
 
 
 
@@ -161,12 +161,27 @@ function paintLocalSt(){
         favSection.classList.remove("hidden");
         favCharacters = favsLocal;
         paintCharacters(favsLocal, favList, "fav");
-        styleFav();     
-        createReset();
+        styleFav();  
+
+
+    const allCharactersLi = allList.children;
+    // const allLiArr = Array.prototype.slice.call(allLi);
+   
+    for (let i = 0; i < allCharactersLi.length; i++) {
+        const eachArticle = allCharactersLi[i].firstChild;
+        console.log(eachArticle);
+            //Esto da el array de objetos de la lista de filtered que tenga un id igual a los que están en favoritos
+           const findArticleIndex = favCharacters.findIndex((eachChar) => eachChar.char_id == parseInt(eachArticle.id));
+    
+      
+              //Comprobar si el objeto estaba en el Array
+        if (findArticleIndex !== -1) {
+            eachArticle.classList.add("allFavs");
+         
         }
  } 
 
-
+}}
 
 function createReset(){
     const resetBtn = document.createElement("button");
@@ -229,13 +244,15 @@ function getCharacters() {
       for (let i = 0; i < allListChildren.length; i++) {
       allListChildren[i].addEventListener('click', handleClickFav);
 }
+paintLocalSt();
     });
+
 }
 
 
 // Al cargar la página
 getCharacters();
-paintLocalSt();
+
 
 
 //# sourceMappingURL=main.js.map

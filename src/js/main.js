@@ -41,11 +41,13 @@ function getCharacters() {
       for (let i = 0; i < allListChildren.length; i++) {
       allListChildren[i].addEventListener('click', handleClickFav);
 }
+paintLocalSt();
     });
+
 }
 
 
 // Al cargar la página
 getCharacters();
-paintLocalSt();
+
 

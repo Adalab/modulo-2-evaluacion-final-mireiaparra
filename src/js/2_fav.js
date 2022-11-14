@@ -74,9 +74,9 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
-//Al cargar la página es 0, así que no se crea el botón con el primer click
-if (favCharacters.length === 1) {
-    createReset(); }
+
+createReset(); 
+
 
 
 
