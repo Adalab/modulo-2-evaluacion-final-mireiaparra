@@ -37,6 +37,10 @@ function getCharacters() {
     .then((data) => {
       characters = data;
       paintCharacters(data, allList, "characters__back");
+      const allListChildren = allList.children;
+      for (let i = 0; i < allListChildren.length; i++) {
+      allListChildren[i].addEventListener('click', handleClickFav);
+}
     });
 }
 

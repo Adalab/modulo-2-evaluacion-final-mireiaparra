@@ -68,8 +68,8 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
-//Mejor que sea cada li que la lista entera. Quizá en favElement?
-allList.addEventListener('click', handleClickFav);
+
+
 
 
 

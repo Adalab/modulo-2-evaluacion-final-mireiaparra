@@ -9,20 +9,24 @@ const container = document.querySelector(".js-main");
 
 
 "use strict";
-function handleClick(ev) {
+function handleClickSearch(ev) {
     ev.preventDefault;
 
     const searchCharactersName = characters.filter((eachCharacter) => eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase()));
     const searchCharactersStatus = characters.filter((eachCharacter) => eachCharacter.status.toLowerCase().includes(searchInput.value.toLowerCase()));
 
     let filteredCharacters = searchCharactersName.concat(searchCharactersStatus);
+    console.log(filteredCharacters);
 
     allList.innerHTML = "";
-    paintCharacters(filteredCharacters, allList);
+    paintCharacters(filteredCharacters, allList, "characters__back");
+    const filteredChildren = allList.children;
+    for (let i = 0; i < filteredChildren.length; i++) {
+        filteredChildren[i].addEventListener('click', handleClickFav);
     }
+}
 
-
-searchBtn.addEventListener('click', handleClick);
+searchBtn.addEventListener('click', handleClickSearch);
 "use strict";
 let favCharacters = [];
 
@@ -93,8 +97,8 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
-//Mejor que sea cada li que la lista entera. Quizá en favElement?
-allList.addEventListener('click', handleClickFav);
+
+
 
 
 
@@ -176,6 +180,10 @@ function getCharacters() {
     .then((data) => {
       characters = data;
       paintCharacters(data, allList, "characters__back");
+      const allListChildren = allList.children;
+      for (let i = 0; i < allListChildren.length; i++) {
+      allListChildren[i].addEventListener('click', handleClickFav);
+}
     });
 }
 
