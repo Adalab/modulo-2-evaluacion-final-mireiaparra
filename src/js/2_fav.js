@@ -14,8 +14,6 @@ function paintFav(ev){
     //Comprobar si el objeto NO estaba en el array y añadirlo o quitarlo si SÍ estaba
     if (isFavIndex === -1) {
         favCharacters.push(findFav);
-        console.log(isFavIndex);
-        console.log(findFav);
     } else {
         favCharacters.splice(isFavIndex, 1);
         favElement.classList.remove("allFavs");
@@ -58,9 +56,15 @@ function styleFav(){
 
 function handleClickRemove(ev){
     ev.preventDefault;
-    console.log("he hecho click");
     const isFavIndex = favCharacters.findIndex((eachFav) => eachFav.char_id == parseInt(ev.target.parentElement.id));
     favCharacters.splice(isFavIndex, 1);
+
+    const allLi = allList.children;
+    const allLiArr = Array.prototype.slice.call(allLi);
+
+    const oldFavCharacterLi = allLiArr.find((eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id));
+    oldFavCharacterLi.firstChild.classList.remove("allFavs");
+
     updateFavList();
    }
    

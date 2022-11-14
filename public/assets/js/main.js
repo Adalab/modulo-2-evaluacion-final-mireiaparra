@@ -34,36 +34,30 @@ function handleClickSearch(ev) {
     // const favListLi = favList.childNodes;
     // const favListLiArr = Array.prototype.slice.call(favListLi);
     const eachFav = document.querySelector(".fav");
-    let findSearch = [];
+    // let findSearch = [];
     for (let i = 0; i < filteredChildren.length; i++) {
         filteredChildren[i].addEventListener('click', handleClickFav);
 
         //Article de cada elemento de la lista de filtrados
         const eachFiltered = filteredChildren[i].firstChild;
-        // console.log(eachFiltered.id);
+        console.log(eachFiltered);
 
-        if (eachFav !== null) {
+        if (favCharacters !== null && favCharacters !== []) {
         //Esto da el array de objetos de la lista de filtered que tenga un id igual a los que están en favoritos
-       const findSearchArr = filteredCharacters.filter((eachChar) => eachChar.char_id == parseInt(eachFav.id));
-       const findSearchIndex = filteredCharacters.indexOf((eachChar) => eachChar.char_id == parseInt(eachFav.id));
+       const findSearchIndex = favCharacters.findIndex((eachChar) => eachChar.char_id == parseInt(eachFiltered.id));
+            console.log(findSearchIndex);
+  
 
-          //Comprobar si el objeto NO estaba en el array y añadirlo o quitarlo si SÍ estaba
-    if (findSearchIndex === -1) {
-        findSearch.push(findSearchArr);
-        console.log(findSearch);
+          //Comprobar si el objeto estaba en el Array
+    if (findSearchIndex !== -1) {
+        eachFiltered.classList.add("allFavs");
+     
     } else {
-        findSearch.splice(findSearchIndex, 1);
+        eachFiltered.classList.add("characters__back");
+    }
     }
     }
 
-    // paintCharacters(filteredCharacters, allList, "characters__back");
-        // console.log(findSearchArr);
-        // findSearch.push(findSearchArr);
-
-        // console.log(findSearchArr);
-    }
-    // console.log(findSearch);
-    // paintCharacters(findSearch, allList, "fav");
 }
 
 searchBtn.addEventListener('click', handleClickSearch);
@@ -83,8 +77,6 @@ function paintFav(ev){
     //Comprobar si el objeto NO estaba en el array y añadirlo o quitarlo si SÍ estaba
     if (isFavIndex === -1) {
         favCharacters.push(findFav);
-        console.log(isFavIndex);
-        console.log(findFav);
     } else {
         favCharacters.splice(isFavIndex, 1);
         favElement.classList.remove("allFavs");
@@ -127,9 +119,15 @@ function styleFav(){
 
 function handleClickRemove(ev){
     ev.preventDefault;
-    console.log("he hecho click");
     const isFavIndex = favCharacters.findIndex((eachFav) => eachFav.char_id == parseInt(ev.target.parentElement.id));
     favCharacters.splice(isFavIndex, 1);
+
+    const allLi = allList.children;
+    const allLiArr = Array.prototype.slice.call(allLi);
+
+    const oldFavCharacterLi = allLiArr.find((eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id));
+    oldFavCharacterLi.firstChild.classList.remove("allFavs");
+
     updateFavList();
    }
    
