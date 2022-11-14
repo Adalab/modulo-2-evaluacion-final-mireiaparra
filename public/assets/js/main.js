@@ -200,6 +200,11 @@ function handleClickReset(){
     favList.innerHTML = "";
     favSection.classList.add("hidden");
     container.classList.remove("main");
+    removeLocalSt();
+
+    for (const eachLi of allList.children) {
+        eachLi.firstChild.classList.remove("allFavs");
+}
 }
 "use strict";
 let characters = [];
