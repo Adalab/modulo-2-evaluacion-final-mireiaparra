@@ -1,24 +1,26 @@
-"use strict";
-let favsLocal = JSON.parse(localStorage.getItem("favChars"));
+// "use strict";
 
-function setLocalSt(){
-   localStorage.setItem("favChars", JSON.stringify(favCharacters));
-}
+// // Cómo lo va a coger cuando está vacío?
+// let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
-function paintLocalSt(){
-    if (favsLocal !== null) {
-        favSection.classList.remove("hidden");
-        favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");
-        styleFav();     
-          // reset();
-        const removeFavBtnNode = document.querySelectorAll(".removeFav");
-        const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
-        console.log(removeFavBtns);
+// function setLocalSt(){
+//    localStorage.setItem("favChars", JSON.stringify(favCharacters));
+// }
+
+// function paintLocalSt(){
+//     if (favsLocal !== null ||  favsLocal!== []) {
+//         favSection.classList.remove("hidden");
+//         favCharacters = favsLocal;
+//         paintCharacters(favsLocal, favList, "fav");
+//         styleFav();     
+//           // reset();
+//         const removeFavBtnNode = document.querySelectorAll(".removeFav");
+//         const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
+//         console.log(removeFavBtns);
     
-        for (let i = 0; i < removeFavBtns.length; i++) {
-            removeFavBtns.addEventListener('click', handleClickRemove);
-        }
- } 
-}
+//         for (let i = 0; i < removeFavBtns.length; i++) {
+//             removeFavBtns.addEventListener('click', handleClickRemove);
+//         }
+//  } 
+// }
 

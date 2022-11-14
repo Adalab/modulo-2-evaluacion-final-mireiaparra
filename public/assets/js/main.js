@@ -46,23 +46,24 @@ function paintFav(ev){
     }
     // setLocalSt();
 
-    // Remove favorite characters list before painting
-    favList.innerHTML = '';
-
-    if (favCharacters === [] || favCharacters === null) {
-        favSection.classList.add("hidden");
-    } else {
-        console.log(favCharacters);
-        favSection.classList.remove("hidden");
-        paintCharacters(favCharacters, favList, "fav");
-        styleFav();
-        // reset();
-    
-
-    }
+  updateFavList();
 
 }
 
+function updateFavList(){
+    favList.innerHTML = '';
+    console.log(favCharacters, "Estoy aquí");
+    if (favCharacters.length === 0 || favCharacters === null) {
+        favSection.classList.add("hidden");
+        container.classList.remove("main");
+        console.log("Esto es el if");
+    } else {
+        favSection.classList.remove("hidden");
+        paintCharacters(favCharacters, favList, "fav");
+        styleFav();
+        console.log("Esto es el else");
+    }
+}
 
 function styleFav(){
     container.classList.add("main");
@@ -83,16 +84,7 @@ function handleClickRemove(ev){
     console.log("he hecho click");
     const isFavIndex = favCharacters.findIndex((eachFav) => eachFav.char_id == parseInt(ev.target.parentElement.id));
     favCharacters.splice(isFavIndex, 1);
-
-    // Meter todo esto en una función diferente. updateFavList();
-    favList.innerHTML = '';
-
-    if (favCharacters === [] || favCharacters === null) {
-        favSection.classList.add("hidden");
-    } else {
-        paintCharacters(favCharacters, favList, "fav");
-        styleFav();
-    }
+    updateFavList();
    }
    
 
@@ -101,34 +93,37 @@ function handleClickFav(ev) {
    paintFav(ev);
 }
 
+//Mejor que sea cada li que la lista entera. Quizá en favElement?
 allList.addEventListener('click', handleClickFav);
 
 
 
 
-"use strict";
-let favsLocal = JSON.parse(localStorage.getItem("favChars"));
+// "use strict";
 
-function setLocalSt(){
-   localStorage.setItem("favChars", JSON.stringify(favCharacters));
-}
+// // Cómo lo va a coger cuando está vacío?
+// let favsLocal = JSON.parse(localStorage.getItem("favChars"));
 
-function paintLocalSt(){
-    if (favsLocal !== null) {
-        favSection.classList.remove("hidden");
-        favCharacters = favsLocal;
-        paintCharacters(favsLocal, favList, "fav");
-        styleFav();     
-          // reset();
-        const removeFavBtnNode = document.querySelectorAll(".removeFav");
-        const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
-        console.log(removeFavBtns);
+// function setLocalSt(){
+//    localStorage.setItem("favChars", JSON.stringify(favCharacters));
+// }
+
+// function paintLocalSt(){
+//     if (favsLocal !== null ||  favsLocal!== []) {
+//         favSection.classList.remove("hidden");
+//         favCharacters = favsLocal;
+//         paintCharacters(favsLocal, favList, "fav");
+//         styleFav();     
+//           // reset();
+//         const removeFavBtnNode = document.querySelectorAll(".removeFav");
+//         const removeFavBtns = Array.prototype.slice.call(removeFavBtnNode);
+//         console.log(removeFavBtns);
     
-        for (let i = 0; i < removeFavBtns.length; i++) {
-            removeFavBtns.addEventListener('click', handleClickRemove);
-        }
- } 
-}
+//         for (let i = 0; i < removeFavBtns.length; i++) {
+//             removeFavBtns.addEventListener('click', handleClickRemove);
+//         }
+//  } 
+// }
 
 
 function reset(){
@@ -187,6 +182,6 @@ function getCharacters() {
 
 // Al cargar la página
 getCharacters();
-paintLocalSt();
+// paintLocalSt();
 
 //# sourceMappingURL=main.js.map
