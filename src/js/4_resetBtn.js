@@ -14,6 +14,7 @@ function handleClickReset(){
     favCharacters = [];
     favList.innerHTML = "";
     favSection.classList.add("hidden");
+    favSection.classList.remove("favsCharacters");
     container.classList.remove("main");
     removeLocalSt();
 

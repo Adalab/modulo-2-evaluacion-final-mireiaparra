@@ -27,11 +27,13 @@ function updateFavList(){
     console.log(favCharacters, "Estoy aquí");
     if (favCharacters.length === 0 || favCharacters === null) {
         favSection.classList.add("hidden");
+        favSection.classList.remove("favsCharacters");
         container.classList.remove("main");
         removeLocalSt();
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
+        favSection.classList.add("favsCharacters");
         paintCharacters(favCharacters, favList, "favsCharacters__list--article");
         console.log(favCharacters.length);
         styleFav();

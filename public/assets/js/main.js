@@ -90,11 +90,13 @@ function updateFavList(){
     console.log(favCharacters, "Estoy aquí");
     if (favCharacters.length === 0 || favCharacters === null) {
         favSection.classList.add("hidden");
+        favSection.classList.remove("favsCharacters");
         container.classList.remove("main");
         removeLocalSt();
         console.log("Esto es el if");
     } else {
         favSection.classList.remove("hidden");
+        favSection.classList.add("favsCharacters");
         paintCharacters(favCharacters, favList, "favsCharacters__list--article");
         console.log(favCharacters.length);
         styleFav();
@@ -159,6 +161,7 @@ function removeLocalSt(){
 function paintLocalSt(){
     if (favsLocal !== null && favsLocal !== []) {
         favSection.classList.remove("hidden");
+        favSection.classList.add("favsCharacters");
         favCharacters = favsLocal;
         paintCharacters(favsLocal, favList, "favsCharacters__list--article");
         styleFav();  
@@ -199,6 +202,7 @@ function handleClickReset(){
     favCharacters = [];
     favList.innerHTML = "";
     favSection.classList.add("hidden");
+    favSection.classList.remove("favsCharacters");
     container.classList.remove("main");
     removeLocalSt();
 

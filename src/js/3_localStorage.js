@@ -12,6 +12,7 @@ function removeLocalSt(){
 function paintLocalSt(){
     if (favsLocal !== null && favsLocal !== []) {
         favSection.classList.remove("hidden");
+        favSection.classList.add("favsCharacters");
         favCharacters = favsLocal;
         paintCharacters(favsLocal, favList, "favsCharacters__list--article");
         styleFav();  
