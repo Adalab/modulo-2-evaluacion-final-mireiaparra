@@ -211,7 +211,9 @@ table {
   flex-direction: column;
   align-items: center; }
   .favsCharacters__list {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px; }
     .favsCharacters__list--article {
       box-shadow: rgba(182, 34, 18, 0.875) 2px 2px 9px 3px;
       background-color: rgba(182, 34, 18, 0.875);
