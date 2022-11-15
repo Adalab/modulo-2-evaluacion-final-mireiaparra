@@ -26,7 +26,7 @@ function handleClickSearch(ev) {
   // console.log(findSearch);
 
   allList.innerHTML = "";
-  paintCharacters(filteredCharacters, allList, "characters__back");
+  paintCharacters(filteredCharacters, allList, "allCharacters__list--article");
   // filteredChildren es un HTMLCollection de li(s)
   // Quiero encontrar los elemetos de filteredCharacters(array de objetos character) que estan en favCharacters(array de objetos character)
 
@@ -54,7 +54,7 @@ function handleClickSearch(ev) {
       if (findSearchIndex !== -1) {
         eachFiltered.classList.add("favsCharacters__list--article");
       } else {
-        eachFiltered.classList.add("characters__back");
+        eachFiltered.classList.add("allCharacters__list--article");
       }
     }
   }
