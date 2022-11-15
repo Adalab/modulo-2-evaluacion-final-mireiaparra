@@ -12,6 +12,7 @@ function paintCharacters(charactersData, list, className) {
     imgElement.src = `${charactersData[i].img}`;
     imgElement.alt = `Photo of ${charactersData[i].name}`;
     imgElement.style.height = "150px";
+    imgElement.style.width = "120px";
     articleElement.appendChild(imgElement);
 
     const titleElement = document.createElement("h2");

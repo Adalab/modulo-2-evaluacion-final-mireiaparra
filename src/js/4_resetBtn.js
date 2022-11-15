@@ -3,7 +3,7 @@ function createReset() {
   const resetBtn = document.createElement("button");
   const resetText = document.createTextNode("Delete All");
   resetBtn.appendChild(resetText);
-  resetBtn.classList.add("resetBtn");
+  resetBtn.classList.add("favsCharacters__reset");
   favSection.appendChild(resetBtn);
   resetBtn.addEventListener("click", handleClickReset);
 }

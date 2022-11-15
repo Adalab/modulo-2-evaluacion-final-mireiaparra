@@ -3,13 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(122, 167, 61);
-  background: linear-gradient(
-    90deg,
-    rgba(122, 167, 61, 1) 0%,
-    rgba(124, 164, 63, 1) 35%,
-    rgb(245, 89, 37) 100%
-  );
+  background: linear-gradient(90deg, $background 0%, $background 35%,rgb(245, 89, 37) 100%);
 
   &__img {
     height: auto;
@@ -22,26 +16,30 @@
     background-color: white;
     z-index: 1;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
   }
 
   &__input {
     padding: 5px;
     margin-right: 15px;
     width: 250px;
-    border: 3px solid rgba(91, 228, 226, 0.35);
+    border: 3px solid $search;
+    font-family: $mainFont;
 
     &:focus {
       outline: none;
-      border: 3px solid rgba(26, 234, 106, 0.722);
+      border: 3px solid $background;
     }
   }
 
   &__btn {
-    background-color: rgba(91, 228, 226, 0.35);
+    background-color: $search;
     color: grey;
     border-style: none;
     padding: 7px;
     border-radius: 15%;
+    cursor: pointer;
+    font-family: $mainFont;
   }
 }
 

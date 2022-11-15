@@ -121,6 +121,7 @@ function handleClickRemove(ev) {
 
   const oldFavCharacterLi = allLiArr.find((eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id));
   oldFavCharacterLi.firstChild.classList.remove("favsCharacters__list--article");
+  console.log
 
   updateFavList();
 }
@@ -170,7 +171,7 @@ function createReset() {
   const resetBtn = document.createElement("button");
   const resetText = document.createTextNode("Delete All");
   resetBtn.appendChild(resetText);
-  resetBtn.classList.add("resetBtn");
+  resetBtn.classList.add("favsCharacters__reset");
   favSection.appendChild(resetBtn);
   resetBtn.addEventListener("click", handleClickReset);
 }
@@ -203,6 +204,7 @@ function paintCharacters(charactersData, list, className) {
     imgElement.src = `${charactersData[i].img}`;
     imgElement.alt = `Photo of ${charactersData[i].name}`;
     imgElement.style.height = "150px";
+    imgElement.style.width = "120px";
     articleElement.appendChild(imgElement);
 
     const titleElement = document.createElement("h2");
