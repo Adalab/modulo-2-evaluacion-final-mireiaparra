@@ -199,7 +199,11 @@ function paintCharacters(charactersData, list, className) {
     articleElement.setAttribute("id", `${charactersData[i].char_id}`);
 
     const imgElement = document.createElement("img");
+    imgElement.src = `${charactersData[i].img}`;
+    imgElement.alt = `Photo of ${charactersData[i].name}`;
+    imgElement.style.height = "150px";
     articleElement.appendChild(imgElement);
+
     const titleElement = document.createElement("h2");
     articleElement.appendChild(titleElement);
     const textElement = document.createElement("p");
@@ -211,10 +215,7 @@ function paintCharacters(charactersData, list, className) {
     const nameText = document.createTextNode(`${charactersData[i].name}`);
     titleElement.appendChild(nameText);
 
-    imgElement.src = `${charactersData[i].img}`;
-    imgElement.alt = `Photo of ${charactersData[i].name}`;
-    imgElement.style.height = "150px";
-    imgElement.style.width = "110px";
+
 
     const statusText = document.createTextNode(`${charactersData[i].status}`);
     textElement.appendChild(statusText);

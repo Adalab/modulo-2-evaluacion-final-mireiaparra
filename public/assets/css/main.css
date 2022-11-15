@@ -201,7 +201,9 @@ table {
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      padding: 10px;
+      width: 150px; }
 
 .hidden {
   display: none; }
@@ -222,7 +224,9 @@ table {
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      width: 150px;
+      padding: 10px; }
     .favsCharacters__list--articleBtn {
       box-shadow: rgba(182, 34, 18, 0.875) 2px 2px 9px 3px;
       background-color: rgba(182, 34, 18, 0.875);
@@ -231,7 +235,9 @@ table {
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      width: 150px;
+      padding: 10px; }
 
 .removeFav {
   position: absolute;
