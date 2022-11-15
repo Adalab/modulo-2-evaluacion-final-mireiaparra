@@ -1,44 +1,44 @@
 .hidden {
-    display: none;
+  display: none;
 }
 .favsCharacters {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &__list {
+  &__list {
     margin-bottom: 20px;
 
     &--article {
-        box-shadow: rgba(182, 34, 18, 0.875) 2px 2px 9px 3px;
-        background-color: rgba(182, 34, 18, 0.875);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 5px;
+      box-shadow: rgba(182, 34, 18, 0.875) 2px 2px 9px 3px;
+      background-color: rgba(182, 34, 18, 0.875);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
     }
-    }
+  }
 }
 
 .removeFav {
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-    padding: 7px;
-    border-radius: 60%;
-    background-color: rgba(217, 209, 209, 0.882);
-    font-size: 12px;
-    color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 60%;
+  background-color: rgba(217, 209, 209, 0.882);
+  font-size: 12px;
+  color: white;
 }
 
-.resetBtn{
-    width: 100px;
-    background-color: rgba(63, 212, 117, 0.78);
-    color: grey;
-    border-style: none;
-    padding: 7px;
-    border-radius: 10%;
+.resetBtn {
+  width: 100px;
+  background-color: rgba(63, 212, 117, 0.78);
+  color: grey;
+  border-style: none;
+  padding: 7px;
+  border-radius: 10%;
 }

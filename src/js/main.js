@@ -7,7 +7,7 @@ function paintCharacters(charactersData, list, className) {
     const articleElement = document.createElement("article");
     articleElement.classList.add(className);
     articleElement.setAttribute("id", `${charactersData[i].char_id}`);
-   
+
     const imgElement = document.createElement("img");
     articleElement.appendChild(imgElement);
     const titleElement = document.createElement("h2");
@@ -39,15 +39,11 @@ function getCharacters() {
       paintCharacters(data, allList, "allCharacters__list--article");
       const allListChildren = allList.children;
       for (let i = 0; i < allListChildren.length; i++) {
-      allListChildren[i].addEventListener('click', handleClickFav);
-}
-paintLocalSt();
+        allListChildren[i].addEventListener("click", handleClickFav);
+      }
+      paintLocalSt();
     });
-
 }
-
 
 // Al cargar la página
 getCharacters();
-
-
