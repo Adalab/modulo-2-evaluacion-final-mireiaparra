@@ -18,6 +18,7 @@ function handleClickSearch(ev) {
 
   //Estilizar los resultados según si son favoritos o no
   const filteredChildrenLi = allList.children;
+  setEventClick(filteredChildrenLi);
   for (let i = 0; i < filteredChildrenLi.length; i++) {
     filteredChildrenLi[i].addEventListener("click", handleClickFav);
 

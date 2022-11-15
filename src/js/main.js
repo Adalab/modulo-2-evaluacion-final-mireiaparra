@@ -25,8 +25,6 @@ function paintCharacters(charactersData, list, className) {
     const nameText = document.createTextNode(`${charactersData[i].name}`);
     titleElement.appendChild(nameText);
 
-
-
     const statusText = document.createTextNode(`${charactersData[i].status}`);
     textElement.appendChild(statusText);
   }
@@ -40,11 +38,15 @@ function getCharacters() {
       characters = data;
       paintCharacters(data, allList, "allCharacters__list--article");
       const allListChildren = allList.children;
-      for (let i = 0; i < allListChildren.length; i++) {
-        allListChildren[i].addEventListener("click", handleClickFav);
-      }
+      setEventClick(allListChildren)
       paintLocalSt();
     });
+}
+
+function setEventClick(list){
+  for (let i = 0; i < list.length; i++) {
+    list[i].addEventListener("click", handleClickFav);
+  }
 }
 
 // Al cargar la página
