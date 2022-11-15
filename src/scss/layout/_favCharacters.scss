@@ -19,6 +19,17 @@
       gap: 5px;
       margin-bottom: 5px;
     }
+
+    &--articleBtn {
+      box-shadow: rgba(182, 34, 18, 0.875) 2px 2px 9px 3px;
+      background-color: rgba(182, 34, 18, 0.875);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
   }
 }
 

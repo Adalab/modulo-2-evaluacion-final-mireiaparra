@@ -14,7 +14,7 @@ function paintLocalSt() {
     favSection.classList.remove("hidden");
     favSection.classList.add("favsCharacters");
     favCharacters = favsLocal;
-    paintCharacters(favsLocal, favList, "favsCharacters__list--article");
+    paintCharacters(favsLocal, favList, "favsCharacters__list--articleBtn");
     styleFav();
 
     const allCharactersLi = allList.children;
@@ -30,7 +30,7 @@ function paintLocalSt() {
 
       //Comprobar si el objeto estaba en el Array
       if (findArticleIndex !== -1) {
-        eachArticle.classList.add("allFavs");
+        eachArticle.classList.add("favsCharacters__list--article");
       }
     }
   }

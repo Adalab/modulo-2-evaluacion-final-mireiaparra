@@ -44,7 +44,7 @@ function handleClickSearch(ev) {
 
       //Comprobar si el objeto estaba en el Array
       if (findSearchIndex !== -1) {
-        eachFiltered.classList.add("allFavs");
+        eachFiltered.classList.add("favsCharacters__list--article");
       } else {
         eachFiltered.classList.add("characters__back");
       }

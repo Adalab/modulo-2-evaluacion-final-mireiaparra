@@ -52,7 +52,7 @@ function handleClickSearch(ev) {
 
       //Comprobar si el objeto estaba en el Array
       if (findSearchIndex !== -1) {
-        eachFiltered.classList.add("allFavs");
+        eachFiltered.classList.add("favsCharacters__list--article");
       } else {
         eachFiltered.classList.add("characters__back");
       }
@@ -67,7 +67,7 @@ let favCharacters = [];
 
 function paintFav(ev) {
   let favElement = ev.target.parentElement;
-  favElement.classList.add("allFavs");
+  favElement.classList.add("favsCharacters__list--article");
 
   //Encontrar el objeto según el click que haga
   const findFav = characters.find(
@@ -84,7 +84,7 @@ function paintFav(ev) {
     favCharacters.push(findFav);
   } else {
     favCharacters.splice(isFavIndex, 1);
-    favElement.classList.remove("allFavs");
+    favElement.classList.remove("favsCharacters__list--article");
   }
 
   updateFavList();
@@ -102,7 +102,7 @@ function updateFavList() {
   } else {
     favSection.classList.remove("hidden");
     favSection.classList.add("favsCharacters");
-    paintCharacters(favCharacters, favList, "favsCharacters__list--article");
+    paintCharacters(favCharacters, favList, "favsCharacters__list--articleBtn");
     console.log(favCharacters.length);
     styleFav();
     setLocalSt();
@@ -113,7 +113,7 @@ function updateFavList() {
 function styleFav() {
   container.classList.add("main");
   const favArticles = document.querySelectorAll(
-    ".favsCharacters__list--article"
+    ".favsCharacters__list--articleBtn"
   );
   // console.log(favArticles);
   for (const favArticle of favArticles) {
@@ -139,7 +139,7 @@ function handleClickRemove(ev) {
   const oldFavCharacterLi = allLiArr.find(
     (eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id)
   );
-  oldFavCharacterLi.firstChild.classList.remove("allFavs");
+  oldFavCharacterLi.firstChild.classList.remove("favsCharacters__list--article");
 
   updateFavList();
 }
@@ -167,7 +167,7 @@ function paintLocalSt() {
     favSection.classList.remove("hidden");
     favSection.classList.add("favsCharacters");
     favCharacters = favsLocal;
-    paintCharacters(favsLocal, favList, "favsCharacters__list--article");
+    paintCharacters(favsLocal, favList, "favsCharacters__list--articleBtn");
     styleFav();
 
     const allCharactersLi = allList.children;
@@ -183,7 +183,7 @@ function paintLocalSt() {
 
       //Comprobar si el objeto estaba en el Array
       if (findArticleIndex !== -1) {
-        eachArticle.classList.add("allFavs");
+        eachArticle.classList.add("favsCharacters__list--article");
       }
     }
   }
@@ -207,7 +207,7 @@ function handleClickReset() {
   removeLocalSt();
 
   for (const eachLi of allList.children) {
-    eachLi.firstChild.classList.remove("allFavs");
+    eachLi.firstChild.classList.remove("favsCharacters__list--article");
   }
 }
 

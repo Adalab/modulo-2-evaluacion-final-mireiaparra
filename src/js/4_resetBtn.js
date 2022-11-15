@@ -16,6 +16,6 @@ function handleClickReset() {
   removeLocalSt();
 
   for (const eachLi of allList.children) {
-    eachLi.firstChild.classList.remove("allFavs");
+    eachLi.firstChild.classList.remove("favsCharacters__list--article");
   }
 }

@@ -3,7 +3,7 @@ let favCharacters = [];
 
 function paintFav(ev) {
   let favElement = ev.target.parentElement;
-  favElement.classList.add("allFavs");
+  favElement.classList.add("favsCharacters__list--article");
 
   //Encontrar el objeto según el click que haga
   const findFav = characters.find(
@@ -20,7 +20,7 @@ function paintFav(ev) {
     favCharacters.push(findFav);
   } else {
     favCharacters.splice(isFavIndex, 1);
-    favElement.classList.remove("allFavs");
+    favElement.classList.remove("favsCharacters__list--article");
   }
 
   updateFavList();
@@ -38,7 +38,7 @@ function updateFavList() {
   } else {
     favSection.classList.remove("hidden");
     favSection.classList.add("favsCharacters");
-    paintCharacters(favCharacters, favList, "favsCharacters__list--article");
+    paintCharacters(favCharacters, favList, "favsCharacters__list--articleBtn");
     console.log(favCharacters.length);
     styleFav();
     setLocalSt();
@@ -49,7 +49,7 @@ function updateFavList() {
 function styleFav() {
   container.classList.add("main");
   const favArticles = document.querySelectorAll(
-    ".favsCharacters__list--article"
+    ".favsCharacters__list--articleBtn"
   );
   // console.log(favArticles);
   for (const favArticle of favArticles) {
@@ -75,7 +75,7 @@ function handleClickRemove(ev) {
   const oldFavCharacterLi = allLiArr.find(
     (eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id)
   );
-  oldFavCharacterLi.firstChild.classList.remove("allFavs");
+  oldFavCharacterLi.firstChild.classList.remove("favsCharacters__list--article");
 
   updateFavList();
 }
