@@ -50,6 +50,12 @@
     border-radius: 10%;
     cursor: pointer;
     font-family: $mainFont;
+
+    &:hover {
+      background-color: $removeHover;
+      color: white;
+      transform: scale(1.2);
+      }
   }
 }
 

@@ -160,7 +160,12 @@ table {
     padding: 7px;
     border-radius: 15%;
     cursor: pointer;
-    font-family: "Kanit", sans-serif; }
+    font-family: "Kanit", sans-serif;
+    transition: transform 1s; }
+    .header__btn:hover {
+      background-color: rgba(75, 155, 154, 0.825);
+      color: white;
+      transform: scale(1.2); }
 
 @media all and (min-width: 768px) {
   .header__img {
@@ -257,6 +262,10 @@ table {
     border-radius: 10%;
     cursor: pointer;
     font-family: "Kanit", sans-serif; }
+    .favsCharacters__reset:hover {
+      background-color: #bef07a;
+      color: white;
+      transform: scale(1.2); }
 
 .removeFav {
   position: absolute;

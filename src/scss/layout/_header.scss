@@ -40,6 +40,13 @@
     border-radius: 15%;
     cursor: pointer;
     font-family: $mainFont;
+    transition: transform 1s;
+
+    &:hover {
+    background-color: $searchHover;
+    color: white;
+    transform: scale(1.2);
+    }
   }
 }
 
