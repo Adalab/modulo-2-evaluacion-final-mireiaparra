@@ -12,9 +12,9 @@
     gap: 20px;
 
     &--article {
-     background-color: rgba(182, 34, 18, 0.875);
-      box-shadow: rgba(182, 34, 18, 0.875) 0px 0.0625em 0.0625em, rgba(182, 34, 18, 0.875) 0px 0.125em 0.5em, rgba(182, 34, 18, 0.875)0px 0px 0px 1px inset;
-      border: 2px solid rgba(182, 34, 18, 0.875);
+     background-color: $favsBackground;
+      box-shadow: $favsBackground 0px 0.0625em 0.0625em, $favsBackground 0px 0.125em 0.5em, $favsBackground 0px 0px 0px 1px inset;
+      border: 2px solid $favsBackground;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -27,9 +27,9 @@
     }
 
     &--articleBtn {
-      background-color: rgba(182, 34, 18, 0.875);
-      box-shadow: rgba(182, 34, 18, 0.875) 0px 0.0625em 0.0625em, rgba(182, 34, 18, 0.875) 0px 0.125em 0.5em, rgba(182, 34, 18, 0.875)0px 0px 0px 1px inset;
-      border: 2px solid rgba(182, 34, 18, 0.875);
+      background-color: $favsBackground;
+      box-shadow: $favsBackground 0px 0.0625em 0.0625em, $favsBackground 0px 0.125em 0.5em, $favsBackground 0px 0px 0px 1px inset;
+      border: 2px solid $favsBackground;
       position: relative;
       display: flex;
       flex-direction: column;

@@ -65,7 +65,6 @@ function handleClickRemove(ev) {
 
   const oldFavCharacterLi = allLiArr.find((eachLi) => eachLi.firstChild.id == parseInt(ev.target.parentElement.id));
   oldFavCharacterLi.firstChild.classList.remove("favsCharacters__list--article");
-  console.log
 
   updateFavList();
 }
