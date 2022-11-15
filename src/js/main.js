@@ -1,6 +1,6 @@
 "use strict";
-let characters = [];
 
+//Función base para pintar los elementos de las listas con DOM avanzado
 function paintCharacters(charactersData, list, className) {
   for (let i = 0; i < charactersData.length; i++) {
     const liElement = document.createElement("li");
@@ -31,6 +31,7 @@ function paintCharacters(charactersData, list, className) {
   }
 }
 
+//Obtener los personajes de la API
 function getCharacters() {
   fetch("https://breakingbadapi.com/api/characters")
     .then((response) => response.json())
@@ -47,3 +48,4 @@ function getCharacters() {
 
 // Al cargar la página
 getCharacters();
+createReset();

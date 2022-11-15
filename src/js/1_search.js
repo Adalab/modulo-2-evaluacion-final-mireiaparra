@@ -2,6 +2,7 @@
 function handleClickSearch(ev) {
   ev.preventDefault();
 
+  //Filtrar objetos por nombre y estado según lo introducido en el input de búsqueda. Concatenar los resultados en un nuevo array
   const searchCharactersName = characters.filter((eachCharacter) =>
     eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase())
   );
@@ -11,39 +12,24 @@ function handleClickSearch(ev) {
 
   let filteredCharacters = searchCharactersName.concat(searchCharactersStatus);
 
-  // Encontrar el objeto de search que tenga el mismo char_id que mi elemento de favsList
-  // TODO: repasar == por ===
-
-  // const findSearch = characters.find((eachChar) => eachChar.char_id == parseInt(.id));
-  // console.log(findSearch);
-
+  //Pintar los resultados
   allList.innerHTML = "";
   paintCharacters(filteredCharacters, allList, "allCharacters__list--article");
-  // filteredChildren es un HTMLCollection de li(s)
-  // Quiero encontrar los elemetos de filteredCharacters(array de objetos character) que estan en favCharacters(array de objetos character)
 
-  const filteredChildren = allList.children;
-
-  // const favListLi = favList.childNodes;
-  // const favListLiArr = Array.prototype.slice.call(favListLi);
-  const eachFav = document.querySelector(".fav");
-  // let findSearch = [];
-  for (let i = 0; i < filteredChildren.length; i++) {
-    filteredChildren[i].addEventListener("click", handleClickFav);
+  //Estilizar los resultados según si son favoritos o no
+  const filteredChildrenLi = allList.children;
+  for (let i = 0; i < filteredChildrenLi.length; i++) {
+    filteredChildrenLi[i].addEventListener("click", handleClickFav);
 
     //Article de cada elemento de la lista de filtrados
-    const eachFiltered = filteredChildren[i].firstChild;
-    console.log(eachFiltered);
+    const eachFiltered = filteredChildrenLi[i].firstChild;
 
     if (favCharacters !== null && favCharacters !== []) {
-      //Esto da el array de objetos de la lista de filtered que tenga un id igual a los que están en favoritos
-      const findSearchIndex = favCharacters.findIndex(
-        (eachChar) => eachChar.char_id == parseInt(eachFiltered.id)
-      );
-      console.log(findSearchIndex);
-
-      //Comprobar si el objeto estaba en el Array
-      if (findSearchIndex !== -1) {
+    //Esto da el index del objeto de favoritos que tenga un id igual al del resultado de la búsqueda
+    const findSearchIndex = favCharacters.findIndex((eachChar) => eachChar.char_id == parseInt(eachFiltered.id));
+    
+    //Comprobar si el objeto de la búsqueda estaba en el array de favoritos o no
+    if (findSearchIndex !== -1) {
         eachFiltered.classList.add("favsCharacters__list--article");
       } else {
         eachFiltered.classList.add("allCharacters__list--article");

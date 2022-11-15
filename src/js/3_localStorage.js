@@ -1,7 +1,4 @@
 "use strict";
-
-let favsLocal = JSON.parse(localStorage.getItem("favChars"));
-
 function setLocalSt() {
   localStorage.setItem("favChars", JSON.stringify(favCharacters));
 }
@@ -10,6 +7,7 @@ function removeLocalSt() {
 }
 
 function paintLocalSt() {
+  //Mostrar elementos favoritos desde el LS si existe
   if (favsLocal !== null && favsLocal !== []) {
     favSection.classList.remove("hidden");
     favSection.classList.add("favsCharacters");
@@ -18,17 +16,14 @@ function paintLocalSt() {
     styleFav();
 
     const allCharactersLi = allList.children;
-    // const allLiArr = Array.prototype.slice.call(allLi);
 
+    //Recorrer cada article de la lista general
     for (let i = 0; i < allCharactersLi.length; i++) {
       const eachArticle = allCharactersLi[i].firstChild;
-      console.log(eachArticle);
-      //Esto da el array de objetos de la lista de filtered que tenga un id igual a los que están en favoritos
-      const findArticleIndex = favCharacters.findIndex(
-        (eachChar) => eachChar.char_id == parseInt(eachArticle.id)
-      );
+    //Encontrar la posición de los objetos de favoritos que tengan un id igual a los articles de la lista general
+      const findArticleIndex = favCharacters.findIndex((eachChar) => eachChar.char_id == parseInt(eachArticle.id));
 
-      //Comprobar si el objeto estaba en el Array
+      //Comprobar si el objeto está en el array de favoritos
       if (findArticleIndex !== -1) {
         eachArticle.classList.add("favsCharacters__list--article");
       }

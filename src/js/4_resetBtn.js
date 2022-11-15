@@ -1,3 +1,4 @@
+"use strict";
 function createReset() {
   const resetBtn = document.createElement("button");
   const resetText = document.createTextNode("Delete All");
@@ -15,6 +16,7 @@ function handleClickReset() {
   container.classList.remove("main");
   removeLocalSt();
 
+  //Eliminar la clase de favoritos de cada article de la lista general
   for (const eachLi of allList.children) {
     eachLi.firstChild.classList.remove("favsCharacters__list--article");
   }

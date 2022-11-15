@@ -5,3 +5,8 @@ const favSection = document.querySelector(".js-favSection");
 const searchBtn = document.querySelector(".js-searchBtn");
 const searchInput = document.querySelector(".js-searchInput");
 const container = document.querySelector(".js-main");
+
+//Variables 
+let characters = [];
+let favCharacters = [];
+let favsLocal = JSON.parse(localStorage.getItem("favChars"));
