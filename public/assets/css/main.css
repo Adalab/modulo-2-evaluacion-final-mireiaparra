@@ -226,6 +226,8 @@ table {
   .favsCharacters__list {
     margin-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px; }
     .favsCharacters__list--article {
       background-color: rgba(182, 34, 18, 0.875);
