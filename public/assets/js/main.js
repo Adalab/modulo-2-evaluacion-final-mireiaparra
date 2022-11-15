@@ -8,7 +8,7 @@ const container = document.querySelector(".js-main");
 
 "use strict";
 function handleClickSearch(ev) {
-  ev.preventDefault;
+  ev.preventDefault();
 
   const searchCharactersName = characters.filter((eachCharacter) =>
     eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase())
@@ -127,7 +127,7 @@ function styleFav() {
 }
 
 function handleClickRemove(ev) {
-  ev.preventDefault;
+  ev.preventDefault();
   const isFavIndex = favCharacters.findIndex(
     (eachFav) => eachFav.char_id == parseInt(ev.target.parentElement.id)
   );
@@ -145,7 +145,7 @@ function handleClickRemove(ev) {
 }
 
 function handleClickFav(ev) {
-  ev.preventDefault;
+  ev.preventDefault();
   paintFav(ev);
 }
 

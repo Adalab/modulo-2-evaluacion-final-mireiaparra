@@ -1,6 +1,6 @@
 "use strict";
 function handleClickSearch(ev) {
-  ev.preventDefault;
+  ev.preventDefault();
 
   const searchCharactersName = characters.filter((eachCharacter) =>
     eachCharacter.name.toLowerCase().includes(searchInput.value.toLowerCase())
