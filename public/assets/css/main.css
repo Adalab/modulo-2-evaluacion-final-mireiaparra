@@ -172,8 +172,9 @@ table {
     width: 70rem; } }
 
 .main {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 3fr;
+  grid-template-columns: 1.5fr 2fr;
   margin-left: 20px;
   margin-right: 20px; }
 
