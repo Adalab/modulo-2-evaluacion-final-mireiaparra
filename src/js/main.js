@@ -54,7 +54,7 @@ function paintCharacters(charactersData, list, className) {
 
 //Obtener los personajes de la API
 function getCharacters() {
-  fetch("/assets/data/characters.json")
+  fetch("./assets/data/characters.json")
     .then((response) => response.json())
     .then((data) => {
       characters = data;
