@@ -26,7 +26,7 @@ function paintLocalSt() {
       //Comprobar si el objeto está en el array de favoritos
       if (findArticleIndex !== -1) {
         eachArticle.classList.add("favsCharacters__list--article");
-      }
+      } 
     }
   }
 }

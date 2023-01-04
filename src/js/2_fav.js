@@ -74,4 +74,7 @@ function handleClickFav(ev) {
   paintFav(ev);
 }
 
-
+logBtn.addEventListener('click', (ev) => {
+  ev.preventDefault();
+  console.log(`Tienes ${favCharacters.length} favoritos`);
+});

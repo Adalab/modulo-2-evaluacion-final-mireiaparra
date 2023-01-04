@@ -28,12 +28,33 @@ function paintCharacters(charactersData, list, className) {
 
     const statusText = document.createTextNode(`${charactersData[i].status}`);
     textElement.appendChild(statusText);
+
+    const chAppArr = charactersData[i].appearance;
+    const chApp = chAppArr.join(",");
+
+ 
+
+    const ulApp = document.createElement("ul");
+    const pApp = document.createElement("p");
+
+    const pAppText = document.createTextNode(chApp);
+    pApp.appendChild(pAppText);
+    ulApp.appendChild(pApp);
+
+    articleElement.appendChild(ulApp);
+
+      if (chAppArr.length === 5) {
+      const allSeasons = document.createElement("p");
+      const allSeasonsText = document.createTextNode("Es un súperpersonaje")
+      allSeasons.appendChild(allSeasonsText);
+      articleElement.appendChild(allSeasons);
+    }
   }
 }
 
 //Obtener los personajes de la API
 function getCharacters() {
-  fetch("https://breakingbadapi.com/api/characters")
+  fetch("/assets/data/characters.json")
     .then((response) => response.json())
     .then((data) => {
       characters = data;

@@ -5,6 +5,7 @@ const favSection = document.querySelector(".js-favSection");
 const searchBtn = document.querySelector(".js-searchBtn");
 const searchInput = document.querySelector(".js-searchInput");
 const container = document.querySelector(".js-main");
+const logBtn = document.querySelector(".js-LogBtn");
 
 let characters = [];
 let favCharacters = [];
